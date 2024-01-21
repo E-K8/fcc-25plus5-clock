@@ -30,17 +30,6 @@ function App() {
   return (
     <div className='clock'>
       <div className='setters'>
-        <div className='break'>
-          <h4 id='break-label'>Break Length</h4>
-          <TimeSetter
-            time={breakTime}
-            setTime={setBreakTime}
-            min={min}
-            max={max}
-            interval={interval}
-            type='break'
-          />
-        </div>
         <div className='session'>
           <h4 id='session-label'>Session Length</h4>
           <TimeSetter
@@ -50,6 +39,17 @@ function App() {
             max={max}
             interval={interval}
             type='session'
+          />
+        </div>
+        <div className='break'>
+          <h4 id='break-label'>Break Length</h4>
+          <TimeSetter
+            time={breakTime}
+            setTime={setBreakTime}
+            min={min}
+            max={max}
+            interval={interval}
+            type='break'
           />
         </div>
       </div>

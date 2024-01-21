@@ -1,0 +1,40 @@
+.clock {
+  max-width: 44rem;
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.setters {
+  display: flex;
+  text-align: center;
+  width: 100%;
+  justify-content: space-around;
+}
+
+button {
+  margin: 1.5rem;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #3737aa;
+  color: white;
+  cursor: pointer;
+}
+
+h3 {
+  font-size: 2rem;
+  margin-top: 1.5rem;
+}
+
+span {
+  font-size: 1.7rem;
+}
+
+.display {
+  text-align: center;
+  margin-top: 1.5rem;
+}

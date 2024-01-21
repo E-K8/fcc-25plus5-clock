@@ -57,7 +57,7 @@ function App() {
     audio.currentTime = 0;
   };
 
-  const startStop = (displayState: DisplayState) => {
+  const startStop = () => {
     setDisplayState((prev) => ({
       ...prev,
       timerRunning: !prev.timerRunning,
@@ -87,6 +87,7 @@ function App() {
 
   return (
     <div className='clock'>
+      <h1>25 + 5 clock</h1>
       <div className='setters'>
         <div className='session'>
           <h4 id='session-label'>Session Length</h4>

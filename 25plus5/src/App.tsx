@@ -31,6 +31,19 @@ function App() {
     };
   }, [displayState.timerRunning]);
 
+  useEffect(() => {
+    if (displayState.time === 0) {
+      const audio = document.getElementById('beep') as HTMLAudioElement;
+      // audio.currentTime = 2;
+      audio.play().catch((err) => console.log(err));
+      setDisplayState((prev) => ({
+        ...prev,
+        timeType: prev.timeType === 'Session' ? 'Break' : 'Session',
+        time: prev.timeType === 'Session' ? breakTime : sessionTime,
+      }));
+    }
+  }, [displayState, breakTime, sessionTime]);
+
   const reset = () => {
     setSessionTime(defaultSessionTime);
     setBreakTime(defaultBreakTime);

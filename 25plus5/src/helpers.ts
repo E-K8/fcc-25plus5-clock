@@ -1,7 +1,7 @@
 export interface DisplayState {
   time: number;
   timeType: 'Session' | 'Break';
-  timeRunning: boolean;
+  timerRunning: boolean;
 }
 
 export const formatTime = (time: number): string => {

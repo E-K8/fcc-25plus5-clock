@@ -31,16 +31,31 @@ function App() {
     };
   }, [displayState.timerRunning]);
 
+  // useEffect(() => {
+  //   if (displayState.time === 0) {
+  //     const audio = document.getElementById('beep') as HTMLAudioElement;
+  //     // audio.currentTime = 2;
+  //     audio.play().catch((err) => console.log(err));
+  //     setDisplayState((prev) => ({
+  //       ...prev,
+  //       timeType: prev.timeType === 'Session' ? 'Break' : 'Session',
+  //       time: prev.timeType === 'Session' ? breakTime : sessionTime,
+  //     }));
+  //   }
+  // }, [displayState, breakTime, sessionTime]);
+
   useEffect(() => {
     if (displayState.time === 0) {
       const audio = document.getElementById('beep') as HTMLAudioElement;
-      // audio.currentTime = 2;
       audio.play().catch((err) => console.log(err));
-      setDisplayState((prev) => ({
-        ...prev,
-        timeType: prev.timeType === 'Session' ? 'Break' : 'Session',
-        time: prev.timeType === 'Session' ? breakTime : sessionTime,
-      }));
+
+      setTimeout(() => {
+        setDisplayState((prev) => ({
+          ...prev,
+          timeType: prev.timeType === 'Session' ? 'Break' : 'Session',
+          time: prev.timeType === 'Session' ? breakTime : sessionTime,
+        }));
+      }, 1000); // Delay of 1 second to allow "00:00" to show
     }
   }, [displayState, breakTime, sessionTime]);
 
@@ -73,6 +88,7 @@ function App() {
       timerRunning: false,
     });
   };
+
   const changeBreakTime = (time: number) => {
     if (displayState.timerRunning) return;
     setBreakTime(time);

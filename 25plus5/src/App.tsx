@@ -31,33 +31,30 @@ function App() {
     };
   }, [displayState.timerRunning]);
 
-  // useEffect(() => {
-  //   if (displayState.time === 0) {
-  //     const audio = document.getElementById('beep') as HTMLAudioElement;
-  //     // audio.currentTime = 2;
-  //     audio.play().catch((err) => console.log(err));
-  //     setDisplayState((prev) => ({
-  //       ...prev,
-  //       timeType: prev.timeType === 'Session' ? 'Break' : 'Session',
-  //       time: prev.timeType === 'Session' ? breakTime : sessionTime,
-  //     }));
-  //   }
-  // }, [displayState, breakTime, sessionTime]);
-
   useEffect(() => {
     if (displayState.time === 0) {
       const audio = document.getElementById('beep') as HTMLAudioElement;
       audio.play().catch((err) => console.log(err));
 
+      // Immediately update the timeType to reflect the new phase
+      setDisplayState((prev) => ({
+        ...prev,
+        timeType: prev.timeType === 'Session' ? 'Break' : 'Session',
+        // Keep time at 0 to ensure "00:00" is displayed
+        time: 0,
+        timerRunning: false, // Stop the timer to ensure "00:00" is visible
+      }));
+
+      // Delayed start for the next countdown to allow "00:00" to be shown
       setTimeout(() => {
         setDisplayState((prev) => ({
           ...prev,
-          timeType: prev.timeType === 'Session' ? 'Break' : 'Session',
-          time: prev.timeType === 'Session' ? breakTime : sessionTime,
+          time: prev.timeType === 'Break' ? breakTime : sessionTime,
+          timerRunning: true, // Restart the timer for the next phase
         }));
-      }, 1000); // Delay of 1 second to allow "00:00" to show
+      }, 1000); // Adjust this delay as needed to ensure "00:00" is visible
     }
-  }, [displayState, breakTime, sessionTime]);
+  }, [displayState.time, breakTime, sessionTime]);
 
   const reset = () => {
     setSessionTime(defaultSessionTime);

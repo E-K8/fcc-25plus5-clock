@@ -1,15 +1,13 @@
-# fcc-25plus5-clock
+# 25 + 5 clock
+
 A project built for the Front End Development Libraries certification from freeCodeCamp
-
-
-## 25 + 5 clock
 
 ### [Task](task.md)
 
-#### [Demo](https://fcc-js-calc.netlify.app)
+### [Demo](https://fcc-25plus5.netlify.app/)
 
 To run locally:
 
-    cd js-calc
+    cd 25plus5
     npm i
     npm run dev
